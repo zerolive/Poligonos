@@ -34,6 +34,7 @@ class BTriangle
 	def initialize *sides
 		@sides = *sides
 		check_positive_sides(*sides)
+		check_closed(*sides)
 	end
 	def number_of_sides 
 		return @sides.count
@@ -43,9 +44,14 @@ class BTriangle
 
 	def check_positive_sides *sides
 		sides.each do |side_value|
-			if side_value <1
+			if side_value < 1
 				raise "Negative values not allowed"
 			end
+		end
+	end
+	def check_closed *sides
+		if sides.inject(:+) < sides.max * 2
+			raise "Short sides can't be shorter than long side or equal"
 		end
 	end
 end
