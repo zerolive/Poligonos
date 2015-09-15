@@ -33,9 +33,20 @@ end
 class BTriangle
 	def initialize *sides
 		@sides = *sides
+		check_positive_sides(*sides)
 	end
 	def number_of_sides 
 		return @sides.count
+	end
+
+	private 
+
+	def check_positive_sides *sides
+		sides.each do |side_value|
+			if side_value <1
+				raise "Negative values not allowed"
+			end
+		end
 	end
 end
 
