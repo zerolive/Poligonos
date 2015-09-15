@@ -22,3 +22,12 @@ describe "A triangle" do
   	expect(Triangle.new(1, 2, 2).perimeter).to be(5)
   end
 end
+
+describe "B triangle" do
+
+	it "Has three sides " do
+		b_triangle = BTriangle.new(1, 1, 1)
+		expect(b_triangle.number_of_sides).to be(3)
+	end
+
+end

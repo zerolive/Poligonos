@@ -15,7 +15,7 @@ class Triangle
 	def perimeter
 		@total_perimeter
 	end
-	
+
 	private
 
 	def check_positive side_a, side_b, side_c
@@ -29,3 +29,15 @@ class Triangle
 		end
 	end
 end
+
+class BTriangle
+	def initialize *sides
+		@sides = *sides
+	end
+	def number_of_sides 
+		return @sides.count
+	end
+end
+
+#b_triangle = BTriangle.new(1, 2, 3)
+#b_triangle.number_of_sides
