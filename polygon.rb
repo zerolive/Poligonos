@@ -40,6 +40,10 @@ class BTriangle
 		return @sides.count
 	end
 
+	def calculate_perimeter
+		return @sides.inject(:+)
+	end
+
 	private 
 
 	def check_positive_sides *sides
