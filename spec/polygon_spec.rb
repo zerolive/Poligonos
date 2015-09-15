@@ -33,9 +33,9 @@ describe "B triangle" do
 		expect{BTriangle.new(0, 1, 1)}.to raise_error "Negative values not allowed"
 	end
 	it "Needs to be closed" do
-	  	expect{Triangle.new(3, 1, 1)}.to raise_error "Short sides can't be shorter than long side or equal"
-	  	expect{Triangle.new(1, 3, 1)}.to raise_error "Short sides can't be shorter than long side or equal"
-	  	expect{Triangle.new(1, 1, 3)}.to raise_error "Short sides can't be shorter than long side or equal"
-	  	expect{Triangle.new(1, 1, 1)}.not_to raise_error
+	  	expect{BTriangle.new(3, 1, 1)}.to raise_error "Short sides can't be shorter than long side or equal"
+	  	expect{BTriangle.new(1, 3, 1)}.to raise_error "Short sides can't be shorter than long side or equal"
+	  	expect{BTriangle.new(1, 1, 3)}.to raise_error "Short sides can't be shorter than long side or equal"
+	  	expect{BTriangle.new(1, 1, 1)}.not_to raise_error
   	end
 end
