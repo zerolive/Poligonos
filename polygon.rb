@@ -3,34 +3,6 @@ class Polygon
 end
 
 class Triangle
-	NUMBER_OF_SIDES = 3
-	def initialize side_a, side_b, side_c
-		check_positive(side_a, side_b, side_c)
-		check_closed(side_a, side_b, side_c)
-		@total_perimeter = side_a + side_b + side_c
-	end
-	def number_of_sides
-		NUMBER_OF_SIDES
-	end
-	def perimeter
-		@total_perimeter
-	end
-
-	private
-
-	def check_positive side_a, side_b, side_c
-		if side_a < 1 || side_b < 1 || side_c < 1
-			raise "Negative values not allowed"
-		end
-	end
-	def check_closed side_a, side_b, side_c
-		if side_a >= side_b + side_c || side_b >= side_a + side_c || side_c >= side_a + side_b
-			raise "Short sides can't be shorter than long side or equal"		
-		end
-	end
-end
-
-class BTriangle
 	def initialize *sides
 		@sides = *sides
 		check_positive_sides
@@ -47,15 +19,19 @@ class BTriangle
 	private
 
 	def check_positive_sides 
-		@sides.each do |side_value|
-			if side_value < 1
+		if there_are_negatives
 				raise "Negative values not allowed"
 			end
-		end
 	end
 	def check_closed
-		if @sides.inject(:+) < @sides.max * 2
+		if sum_of_every_side_is_longer_than_longer_side_twice
 			raise "Short sides can't be shorter than long side or equal"
 		end
+	end
+	def there_are_negatives
+		@sides.any? { |side_value| side_value < 1 }
+	end
+	def sum_of_every_side_is_longer_than_longer_side_twice
+		@sides.inject(:+) < @sides.max * 2
 	end
 end
