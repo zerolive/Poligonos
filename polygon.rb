@@ -35,3 +35,37 @@ class Triangle
 		@sides.inject(:+) < @sides.max * 2
 	end
 end
+
+class EquilateralTriangle < Triangle
+#3, 3, 3
+	def area
+		height = calculate_height
+		calculate_area(height)
+	end
+
+	private
+
+	def calculate_area height
+		area = ( height * @sides.max )/2
+		area
+	end
+
+	def calculate_height
+		height = Math.sqrt((@sides.max * @sides.max) - ((@sides.max)/2 * (@sides.max)/2))
+	end
+end
+
+class IsoscelesTriangle < Triangle
+#4, 3, 3
+
+
+end
+
+class ScaleneTriangle < Triangle
+#3, 4, 5
+
+
+end
+
+test = EquilateralTriangle.new(3,3,3)
+test.area

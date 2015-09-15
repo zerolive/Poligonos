@@ -21,4 +21,7 @@ describe "A triangle" do
   	expect(Triangle.new(1, 2, 2).calculate_perimeter).to be(5)
   	expect(Triangle.new(1, 1, 1).calculate_perimeter).to be(3)
   end
+  it "Knows to find area" do
+
+  end
 end
