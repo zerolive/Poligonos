@@ -16,7 +16,21 @@ class Triangle
 		return @sides.inject(:+)
 	end
 
+	def area
+		return calculate_area
+	end
+
 	private
+
+	def calculate_area 
+		semiperimeter = calculate_semiperimeter
+		areatriangle = Math.sqrt(semiperimeter * (semiperimeter - @sides[0]) * (semiperimeter - @sides[1]) * (semiperimeter - @sides[2]))
+		return areatriangle
+	end
+
+	def calculate_semiperimeter
+		return @sides.inject(:+)/2
+	end
 
 	def check_positive_sides 
 		if there_are_negatives
@@ -38,21 +52,8 @@ end
 
 class EquilateralTriangle < Triangle
 #3, 3, 3
-	def area
-		height = calculate_height
-		calculate_area(height)
-	end
 
-	private
 
-	def calculate_area height
-		area = ( height * @sides.max )/2
-		area
-	end
-
-	def calculate_height
-		height = Math.sqrt((@sides.max * @sides.max) - ((@sides.max)/2 * (@sides.max)/2))
-	end
 end
 
 class IsoscelesTriangle < Triangle
@@ -67,5 +68,5 @@ class ScaleneTriangle < Triangle
 
 end
 
-test = EquilateralTriangle.new(3,3,3)
+test = EquilateralTriangle.new(3,4,5)
 test.area
