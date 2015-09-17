@@ -21,6 +21,10 @@ class Triangle
 		return calculate_area.to_i
 	end
 
+	def is_equilateral
+		return check_sides_are_equal
+	end
+
 	private
 
 	def calculate_area 
@@ -49,18 +53,9 @@ class Triangle
 	def sum_of_every_side_is_longer_than_longer_side_twice
 		@sides.inject(:+) < @sides.max * 2
 	end
-end
-
-class EquilateralTriangle < Triangle
-
-	def is_equilateral
-		return check_sides_are_equal
-	end
-
-	private
 
 	def check_sides_are_equal
-		 @sides.all? { |side_value| side_value == @sides[0]}
+		 @sides.uniq.size == 1
 	end
 
 end
@@ -74,11 +69,7 @@ class IsoscelesTriangle < Triangle
 	private
 
 	def check_two_sides_equal
-		if @sides.uniq.size == 2
-			return true
-		else
-			return false
-		end
+		@sides.uniq.size == 2
 	end
 
 end
@@ -92,11 +83,7 @@ class ScaleneTriangle < Triangle
 	private
 
 	def check_hasnt_sides_equal
-		if @sides.uniq.size == 3
-			return true
-		else
-			return false
-		end
+		@sides.uniq.size == 3
 	end
 
 end
