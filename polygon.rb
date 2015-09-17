@@ -4,8 +4,10 @@ end
 
 class Triangle
 	def self.build *sides
-		#if is_isosceles *sides return Isosceles.new
-		Triangle.new(*sides)
+		#if is_equilateral(sides); return true else return false end
+		#if is_isosceles(*sides)
+		#if is_scalene(*sides)
+		new(*sides)
 	end
 
 	def initialize *sides
@@ -14,7 +16,7 @@ class Triangle
 		check_closed
 	end
 
-	def number_of_sides 
+	def number_of_sides
 		return @sides.count
 	end
 
@@ -23,12 +25,11 @@ class Triangle
 	end
 
 	def area
-		#mirar el .to_i
 		return calculate_area
 	end
 
 	def is_equilateral
-		return check_sides_are_equal
+		return check_sides_are_equal 
 	end
 
 	def is_isosceles
@@ -38,6 +39,8 @@ class Triangle
 	def is_scalene
 		check_hasnt_sides_equal
 	end
+
+	private_class_method :new
 
 	private 
 
@@ -69,7 +72,7 @@ class Triangle
 		@sides.inject(:+) < @sides.max * 2
 	end
 
-	def check_sides_are_equal
+	def check_sides_are_equal 
 		 @sides.uniq.size == 1
 	end
 
