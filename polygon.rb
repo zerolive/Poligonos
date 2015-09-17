@@ -67,6 +67,19 @@ end
 
 class IsoscelesTriangle < Triangle
 
+	def is_isosceles
+		check_two_sides_equal
+	end
+
+	private
+
+	def check_two_sides_equal
+		if @sides.uniq.size == 2
+			return true
+		else
+			return false
+		end
+	end
 
 end
 

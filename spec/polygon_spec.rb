@@ -35,3 +35,13 @@ describe "A equilateral triangle" do
 	end
 
 end
+
+describe "A isosceles triangle" do
+
+	it "Has two sides equal" do
+		expect(IsoscelesTriangle.new(3, 3, 3).is_isosceles).to be(false)
+		expect(IsoscelesTriangle.new(3, 4, 3).is_isosceles).to be(true)
+		expect(IsoscelesTriangle.new(3, 4, 5).is_isosceles).to be(false)
+	end
+
+end
