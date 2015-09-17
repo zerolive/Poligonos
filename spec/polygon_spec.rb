@@ -18,10 +18,20 @@ describe "A triangle" do
   	expect{Triangle.new(1, 1, 1)}.not_to raise_error
   end
   it "Knows its perimeter" do
-  	expect(Triangle.new(1, 2, 2).calculate_perimeter).to be(5)
-  	expect(Triangle.new(1, 1, 1).calculate_perimeter).to be(3)
+  	expect(Triangle.new(1, 2, 2).perimeter).to be(5)
+  	expect(Triangle.new(1, 1, 1).perimeter).to be(3)
   end
-  it "Knows to find area" do
+  it "Knows how to find area" do
+  	expect(Triangle.new(3, 4, 5).area).to be(6)
+  end
+end
 
-  end
+describe "A equilateral triangle" do
+
+	it "Has three sides equal" do
+		expect(EquilateralTriangle.new(3, 3, 3).is_equilateral).to be(true) 
+		expect(EquilateralTriangle.new(3, 3, 4).is_equilateral).to be(false)
+		expect(EquilateralTriangle.new(3, 4, 5).is_equilateral).to be(false)
+	end
+
 end

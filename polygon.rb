@@ -12,12 +12,13 @@ class Triangle
 		return @sides.count
 	end
 
-	def calculate_perimeter
+	def perimeter
 		return @sides.inject(:+)
 	end
 
 	def area
-		return calculate_area
+		#mirar el .to_i
+		return calculate_area.to_i
 	end
 
 	private
@@ -51,22 +52,25 @@ class Triangle
 end
 
 class EquilateralTriangle < Triangle
-#3, 3, 3
 
+	def is_equilateral
+		return check_sides_are_equal
+	end
+
+	private
+
+	def check_sides_are_equal
+		 @sides.all? { |side_value| side_value == @sides[0]}
+	end
 
 end
 
 class IsoscelesTriangle < Triangle
-#4, 3, 3
 
 
 end
 
 class ScaleneTriangle < Triangle
-#3, 4, 5
 
 
 end
-
-test = EquilateralTriangle.new(3,4,5)
-test.area
