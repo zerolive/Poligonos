@@ -85,5 +85,18 @@ end
 
 class ScaleneTriangle < Triangle
 
+	def is_scalene
+		check_hasnt_sides_equal
+	end
+
+	private
+
+	def check_hasnt_sides_equal
+		if @sides.uniq.size == 3
+			return true
+		else
+			return false
+		end
+	end
 
 end

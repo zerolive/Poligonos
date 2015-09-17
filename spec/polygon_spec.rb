@@ -45,3 +45,13 @@ describe "A isosceles triangle" do
 	end
 
 end
+
+describe "A scalene triangle" do
+
+	it "Has two sides equal" do
+		expect(ScaleneTriangle.new(3, 3, 3).is_scalene).to be(false)
+		expect(ScaleneTriangle.new(3, 4, 3).is_scalene).to be(false)
+		expect(ScaleneTriangle.new(3, 4, 5).is_scalene).to be(true)
+	end
+
+end
