@@ -5,7 +5,7 @@ describe "A triangle" do
 
 
   it "Has three sides " do
-  	expect(Triangle.build(1, 1, 1).number_of_sides).to be(3)
+  	expect(Triangle.new(1, 1, 1).number_of_sides).to be(3)
   end
   it "Has positive sides" do
   	expect{Triangle.build(0, 1, 1)}.to raise_error "Negative values not allowed"

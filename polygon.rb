@@ -4,10 +4,10 @@ end
 
 class Triangle
 	def self.build *sides
-		#if is_equilateral(sides); return true else return false end
-		#if is_isosceles(*sides)
-		#if is_scalene(*sides)
 		new(*sides)
+		if is_equilateral; return EquilateralTriangle(*sides).new end
+		if is_isosceles; return IsoscelesTriangle(sides).new end
+		if is_scalene; return ScaleneTriangle(sides).new end
 	end
 
 	def initialize *sides
@@ -28,16 +28,16 @@ class Triangle
 		return calculate_area
 	end
 
-	def is_equilateral
-		return check_sides_are_equal 
+	def self.is_equilateral *sides
+		return self.check_sides_are_equal *sides 
 	end
 
-	def is_isosceles
-		check_two_sides_equal
+	def self.is_isosceles *sides
+		return self.check_two_sides_equal *sides
 	end
 
-	def is_scalene
-		check_hasnt_sides_equal
+	def self.is_scalene *sides
+		return self.check_hasnt_sides_equal *sides
 	end
 
 	private_class_method :new
@@ -72,15 +72,27 @@ class Triangle
 		@sides.inject(:+) < @sides.max * 2
 	end
 
-	def check_sides_are_equal 
-		 @sides.uniq.size == 1
+	def self.check_sides_are_equal *sides
+		 sides.uniq.size == 1
 	end
 
-	def check_two_sides_equal
-		@sides.uniq.size == 2
+	def self.check_two_sides_equal *sides
+		sides.uniq.size == 2
 	end
 
-	def check_hasnt_sides_equal
-		@sides.uniq.size == 3
+	def self.check_hasnt_sides_equal *sides
+		sides.uniq.size == 3
 	end
+end
+
+class EquilateralTriangle < Triangle
+
+end
+
+class IsoscelesTriangle < Triangle
+
+end
+
+class ScaleneTriangle < Triangle
+
 end
