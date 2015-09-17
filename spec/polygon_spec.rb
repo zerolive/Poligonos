@@ -23,11 +23,16 @@ describe "A triangle" do
   it "Knows how to find area" do
   	expect(Triangle.new(3, 4, 5).area).to be(6)
   end
-  it "is equilateral" do
+  it "Is equilateral" do
 	expect(Triangle.new(3, 3, 3).is_equilateral).to be(true) 
 	expect(Triangle.new(3, 3, 4).is_equilateral).to be(false)
 	expect(Triangle.new(3, 4, 5).is_equilateral).to be(false)
   end
+	it "Is isosceles" do
+		expect(Triangle.new(3, 3, 3).is_isosceles).to be(false)
+		expect(Triangle.new(3, 4, 3).is_isosceles).to be(true)
+		expect(Triangle.new(3, 4, 5).is_isosceles).to be(false)
+	end
 end
 
 describe "A isosceles triangle" do

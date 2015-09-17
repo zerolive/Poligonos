@@ -25,6 +25,10 @@ class Triangle
 		return check_sides_are_equal
 	end
 
+	def is_isosceles
+		check_two_sides_equal
+	end
+
 	private
 
 	def calculate_area 
@@ -57,7 +61,10 @@ class Triangle
 	def check_sides_are_equal
 		 @sides.uniq.size == 1
 	end
-
+	
+	def check_two_sides_equal
+		@sides.uniq.size == 2
+	end
 end
 
 class IsoscelesTriangle < Triangle
