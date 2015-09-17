@@ -3,11 +3,17 @@ class Polygon
 end
 
 class Triangle
+	def self.build *sides
+		#if is_isosceles *sides return Isosceles.new
+		Triangle.new(*sides)
+	end
+
 	def initialize *sides
 		@sides = *sides
 		check_positive_sides
 		check_closed
 	end
+
 	def number_of_sides 
 		return @sides.count
 	end
@@ -18,7 +24,7 @@ class Triangle
 
 	def area
 		#mirar el .to_i
-		return calculate_area.to_i
+		return calculate_area
 	end
 
 	def is_equilateral
@@ -29,7 +35,12 @@ class Triangle
 		check_two_sides_equal
 	end
 
-	private
+	def is_scalene
+		check_hasnt_sides_equal
+	end
+
+	private 
+
 
 	def calculate_area 
 		semiperimeter = calculate_semiperimeter
@@ -61,36 +72,12 @@ class Triangle
 	def check_sides_are_equal
 		 @sides.uniq.size == 1
 	end
-	
-	def check_two_sides_equal
-		@sides.uniq.size == 2
-	end
-end
-
-class IsoscelesTriangle < Triangle
-
-	def is_isosceles
-		check_two_sides_equal
-	end
-
-	private
 
 	def check_two_sides_equal
 		@sides.uniq.size == 2
 	end
-
-end
-
-class ScaleneTriangle < Triangle
-
-	def is_scalene
-		check_hasnt_sides_equal
-	end
-
-	private
 
 	def check_hasnt_sides_equal
 		@sides.uniq.size == 3
 	end
-
 end
