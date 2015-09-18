@@ -4,9 +4,9 @@ end
 
 class Triangle
 	def self.build *sides
-		if is_equilateral(*sides); return EquilateralTriangle.new(*sides) end
-		if is_isosceles(*sides); return IsoscelesTriangle.new(*sides) end
-		if is_scalene(*sides); return ScaleneTriangle.new(*sides) end
+		return EquilateralTriangle.new(*sides) if is_equilateral(*sides)
+		return IsoscelesTriangle.new(*sides) if is_isosceles(*sides)
+		return ScaleneTriangle.new(*sides) if is_scalene(*sides)
 	end
 
 	def initialize *sides
@@ -50,14 +50,10 @@ class Triangle
 	end
 
 	def check_positive_sides 
-		if there_are_negatives
-			raise "Negative values not allowed"
-		end
+		raise "Negative values not allowed" if there_are_negatives
 	end
 	def check_closed
-		if sum_of_every_side_is_longer_than_longer_side_twice
-			raise "Short sides can't be shorter than long side or equal"
-		end
+		raise "Short sides can't be shorter than long side or equal" if sum_of_every_side_is_longer_than_longer_side_twice
 	end
 	def there_are_negatives
 		@sides.any? { |side_value| side_value < 1 }
