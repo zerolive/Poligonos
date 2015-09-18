@@ -49,4 +49,8 @@ describe "A scuare" do
 	it "Has positive sides" do
 		expect{Square.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
 	end
+	it "Knows its perimeter" do
+		expect(Square.new(1,1,1,1).perimeter).to eq(4)
+		expect(Square.new(1,1,1,2).perimeter).to eq(5)
+	end
 end

@@ -13,10 +13,18 @@ class Square
 		end 
 	end
 
+	def perimeter
+		return sum_of_sides
+	end
+
 	private
 
 	def there_are_nonpositive_sides
 		@sides.any? { |side_value| side_value < 1 }
+	end
+
+	def sum_of_sides
+		return @sides.inject(:+)
 	end
 
 end
