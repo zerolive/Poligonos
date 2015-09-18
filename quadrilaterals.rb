@@ -1,4 +1,4 @@
-class Square 
+class Quadrilaterals
 
 	def initialize *sides
 		@sides = sides
@@ -8,9 +8,7 @@ class Square
 		return @sides.count
 	end
 	def check_positive_sides
-		if there_are_nonpositive_sides
-			raise "Non-positive sides arent allowed" 	
-		end 
+		raise "Non-positive sides arent allowed" if there_are_nonpositive_sides
 	end
 
 	def perimeter

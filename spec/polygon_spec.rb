@@ -1,5 +1,5 @@
 require './polygon'
-require './square'
+require './quadrilaterals'
 require 'rspec'
 
 describe "A triangle" do
@@ -41,16 +41,16 @@ describe "A triangle" do
   end
 end
 
-describe "A scuare" do
+describe "A quadrilaterals" do
 
 	it "Has four sides" do
-		expect(Square.new(1,1,1,1).number_of_sides).to eq(4)
+		expect(Quadrilaterals.new(1,1,1,1).number_of_sides).to eq(4)
 	end
 	it "Has positive sides" do
-		expect{Square.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
+		expect{Quadrilaterals.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
 	end
 	it "Knows its perimeter" do
-		expect(Square.new(1,1,1,1).perimeter).to eq(4)
-		expect(Square.new(1,1,1,2).perimeter).to eq(5)
+		expect(Quadrilaterals.new(1,1,1,1).perimeter).to eq(4)
+		expect(Quadrilaterals.new(1,1,1,2).perimeter).to eq(5)
 	end
 end
