@@ -5,9 +5,9 @@ end
 class Triangle
 	def self.build *sides
 		new(*sides)
-		#if is_equilateral; return EquilateralTriangle(*sides).new end
-		#if is_isosceles; return IsoscelesTriangle(sides).new end
-		#if is_scalene; return ScaleneTriangle(sides).new end
+		if sides.uniq.size == 1; return EquilateralTriangle.new(*sides) end
+		if sides.uniq.size == 2; return IsoscelesTriangle.new(*sides) end
+		if sides.uniq.size == 3; return ScaleneTriangle.new(*sides) end
 	end
 
 	def initialize *sides
@@ -40,7 +40,7 @@ class Triangle
 		return check_hasnt_sides_equal
 	end
 
-	private_class_method :new
+	#private_class_method :new
 
 	private 
 
@@ -73,7 +73,7 @@ class Triangle
 	end
 
 	def check_sides_are_equal
-		 @sides.uniq.size == 1
+		@sides.uniq.size == 1
 	end
 
 	def check_two_sides_equal
@@ -86,10 +86,6 @@ class Triangle
 end
 
 class EquilateralTriangle < Triangle
-
-	def self.number_of_sides *sides
-		return sides.count
-	end
 
 end
 
