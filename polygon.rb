@@ -5,9 +5,9 @@ end
 class Triangle
 	def self.build *sides
 		new(*sides)
-		if is_equilateral; return EquilateralTriangle(*sides).new end
-		if is_isosceles; return IsoscelesTriangle(sides).new end
-		if is_scalene; return ScaleneTriangle(sides).new end
+		#if is_equilateral; return EquilateralTriangle(*sides).new end
+		#if is_isosceles; return IsoscelesTriangle(sides).new end
+		#if is_scalene; return ScaleneTriangle(sides).new end
 	end
 
 	def initialize *sides
@@ -28,16 +28,16 @@ class Triangle
 		return calculate_area
 	end
 
-	def self.is_equilateral *sides
-		return self.check_sides_are_equal *sides 
+	def is_equilateral
+		return check_sides_are_equal
 	end
 
-	def self.is_isosceles *sides
-		return self.check_two_sides_equal *sides
+	def is_isosceles
+		return check_two_sides_equal
 	end
 
-	def self.is_scalene *sides
-		return self.check_hasnt_sides_equal *sides
+	def is_scalene
+		return check_hasnt_sides_equal
 	end
 
 	private_class_method :new
@@ -72,20 +72,24 @@ class Triangle
 		@sides.inject(:+) < @sides.max * 2
 	end
 
-	def self.check_sides_are_equal *sides
-		 sides.uniq.size == 1
+	def check_sides_are_equal
+		 @sides.uniq.size == 1
 	end
 
-	def self.check_two_sides_equal *sides
-		sides.uniq.size == 2
+	def check_two_sides_equal
+		@sides.uniq.size == 2
 	end
 
-	def self.check_hasnt_sides_equal *sides
-		sides.uniq.size == 3
+	def check_hasnt_sides_equal
+		@sides.uniq.size == 3
 	end
 end
 
 class EquilateralTriangle < Triangle
+
+	def self.number_of_sides *sides
+		return sides.count
+	end
 
 end
 
