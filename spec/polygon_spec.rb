@@ -24,18 +24,18 @@ describe "A triangle" do
   	expect(Triangle.build(3, 4, 5).area).to eq(6)
   end
   it "Knows if its equilateral" do
-	expect(Triangle.build(3, 3, 3).is_equilateral).to be(true) 
-	expect(Triangle.build(3, 3, 4).is_equilateral).to be(false)
-	expect(Triangle.build(3, 4, 5).is_equilateral).to be(false)
+	expect(Triangle.build(3, 3, 3).equilateral?).to be(true) 
+	expect(Triangle.build(3, 3, 4).equilateral?).to be(false)
+	expect(Triangle.build(3, 4, 5).equilateral?).to be(false)
   end
   it "Knows if its isosceles" do
-	expect(Triangle.build(3, 3, 3).is_isosceles).to be(false)
-	expect(Triangle.build(3, 4, 3).is_isosceles).to be(true)
-	expect(Triangle.build(3, 4, 5).is_isosceles).to be(false)
+	expect(Triangle.build(3, 3, 3).isosceles?).to be(false)
+	expect(Triangle.build(3, 4, 3).isosceles?).to be(true)
+	expect(Triangle.build(3, 4, 5).isosceles?).to be(false)
   end
   it "Knows if its scalene" do
-	expect(Triangle.build(3, 3, 3).is_scalene).to be(false)
-	expect(Triangle.build(3, 4, 3).is_scalene).to be(false)
-	expect(Triangle.build(3, 4, 5).is_scalene).to be(true)
+	expect(Triangle.build(3, 3, 3).scalene?).to be(false)
+	expect(Triangle.build(3, 4, 3).scalene?).to be(false)
+	expect(Triangle.build(3, 4, 5).scalene?).to be(true)
   end
 end
