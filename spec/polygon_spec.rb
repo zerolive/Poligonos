@@ -1,4 +1,5 @@
 require './polygon'
+require './square'
 require 'rspec'
 
 describe "A triangle" do
@@ -38,4 +39,14 @@ describe "A triangle" do
 	expect(Triangle.build(3, 4, 3).scalene?).to be(false)
 	expect(Triangle.build(3, 4, 5).scalene?).to be(true)
   end
+end
+
+describe "A scuare" do
+
+	it "Has four sides" do
+		expect(Square.new(1,1,1,1).number_of_sides).to eq(4)
+	end
+	it "Has positive sides" do
+		expect{Square.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
+	end
 end

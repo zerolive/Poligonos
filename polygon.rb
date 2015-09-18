@@ -51,8 +51,8 @@ class Triangle
 
 	def check_positive_sides 
 		if there_are_negatives
-				raise "Negative values not allowed"
-			end
+			raise "Negative values not allowed"
+		end
 	end
 	def check_closed
 		if sum_of_every_side_is_longer_than_longer_side_twice
@@ -85,9 +85,6 @@ class Triangle
 		sides.uniq.size == 3
 	end
 end
-
-
-
 
 class EquilateralTriangle < Triangle
 
