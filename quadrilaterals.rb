@@ -16,7 +16,11 @@ class Quadrilateral
 	end
 
 	def is_square
-		four_sides_are_equal
+		sides_are_equal
+	end
+
+	def is_trapezoid
+		sides_are_different
 	end
 
 	#----------------------------------------------------------
@@ -30,7 +34,10 @@ class Quadrilateral
 		return @sides.inject(:+)
 	end
 
-	def four_sides_are_equal
+	def sides_are_equal
 		@sides.uniq.size == 1
+	end
+	def sides_are_different
+		@sides.uniq.size == 4
 	end
 end

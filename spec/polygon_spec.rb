@@ -57,4 +57,10 @@ describe "A Quadrilateral" do
 		expect(Quadrilateral.new(1,1,1,1).is_square).to be(true)
 		expect(Quadrilateral.new(1,1,1,2).is_square).to be(false)
 	end
+	it "Knows if its a trapezoid" do
+		expect(Quadrilateral.new(1,1,1,1).is_trapezoid).to be(false)
+		expect(Quadrilateral.new(1,2,1,1).is_trapezoid).to be(false)
+		expect(Quadrilateral.new(1,2,3,1).is_trapezoid).to be(false)
+		expect(Quadrilateral.new(1,2,3,4).is_trapezoid).to be(true)
+	end
 end
