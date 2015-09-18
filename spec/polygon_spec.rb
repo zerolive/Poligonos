@@ -41,16 +41,20 @@ describe "A triangle" do
   end
 end
 
-describe "A quadrilaterals" do
+describe "A Quadrilateral" do
 
 	it "Has four sides" do
-		expect(Quadrilaterals.new(1,1,1,1).number_of_sides).to eq(4)
+		expect(Quadrilateral.new(1,1,1,1).number_of_sides).to eq(4)
 	end
 	it "Has positive sides" do
-		expect{Quadrilaterals.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
+		expect{Quadrilateral.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
 	end
 	it "Knows its perimeter" do
-		expect(Quadrilaterals.new(1,1,1,1).perimeter).to eq(4)
-		expect(Quadrilaterals.new(1,1,1,2).perimeter).to eq(5)
+		expect(Quadrilateral.new(1,1,1,1).perimeter).to eq(4)
+		expect(Quadrilateral.new(1,1,1,2).perimeter).to eq(5)
+	end
+	it "Knows if its a square" do
+		expect(Quadrilateral.new(1,1,1,1).is_square).to be(true)
+		expect(Quadrilateral.new(1,1,1,2).is_square).to be(false)
 	end
 end

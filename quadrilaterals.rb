@@ -1,4 +1,4 @@
-class Quadrilaterals
+class Quadrilateral
 
 	def initialize *sides
 		@sides = sides
@@ -15,6 +15,11 @@ class Quadrilaterals
 		return sum_of_sides
 	end
 
+	def is_square
+		four_sides_are_equal
+	end
+
+	#----------------------------------------------------------
 	private
 
 	def there_are_nonpositive_sides
@@ -25,4 +30,7 @@ class Quadrilaterals
 		return @sides.inject(:+)
 	end
 
+	def four_sides_are_equal
+		@sides.uniq.size == 1
+	end
 end
