@@ -66,8 +66,8 @@ describe "A Quadrilateral" do
 		expect(Quadrilateral.build(1,1,1,1).area).to eq(1)
 		expect(Quadrilateral.build(2,2,2,2).area).to eq(4)
 	end
-	it "Knows rectabgle area" do
+	it "Knows rectangle area" do
 		expect(Quadrilateral.build(1,1,2,2).area).to eq(2)
-		expect(Quadrilateral.build(1,1,3,3).area).to eq(3)
+		expect(Quadrilateral.build(2,2,3,3).area).to eq(6)
 	end
 end
