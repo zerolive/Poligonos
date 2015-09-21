@@ -1,8 +1,12 @@
 class Quadrilateral
-
+	def self.build *sides
+		return Square.new(*sides) if is_square(*sides)
+		return Rectangle.new(*sides) if is_rectangle(*sides)
+	end
 	def initialize *sides
 		@sides = sides
 		check_positive_sides
+		
 	end
 	def number_of_sides
 		return @sides.count
@@ -15,22 +19,22 @@ class Quadrilateral
 		return sum_of_sides
 	end
 
-	def is_square
-		sides_are_equal
+	def self.is_square *sides
+		sides_are_equal(*sides)
 	end
-
+	def is_square
+		return false
+	end
 	def is_trapezoid
 		sides_are_different
 	end
 
+	def self.is_rectangle *sides
+		check_two_couples_sides_equal(*sides)
+	end
 	def is_rectangle
-		count_number_of_equal_sides == 2
+		return false
 	end
-
-	def print_values
-		@sides.each { |x| p x }
-	end
-
 	#----------------------------------------------------------
 	private
 
@@ -42,16 +46,16 @@ class Quadrilateral
 		@sides.inject(:+)
 	end
 
-	def sides_are_equal
-		@sides.uniq.size == 1
+	def self.sides_are_equal *sides
+		sides.uniq.size == 1
 	end
 	def sides_are_different
 		@sides.uniq.size == 4
 	end
-	def count_number_of_equal_sides
+	def self.check_two_couples_sides_equal *sides
 		count = 0
 		sides_for_count = []
-		@sides.each { |side| sides_for_count << side }
+		sides.each { |side| sides_for_count << side }
 		sides_for_count.each_with_index do |a_side, a_index|
 			sides_for_count.each_with_index do |b_side, b_index|
 				if a_side == b_side && a_index != b_index
@@ -60,6 +64,56 @@ class Quadrilateral
 				end
 			end
 		end
-		return count
+		return true if count == 2
+		return false if count !=2
+	end
+	class Square < Quadrilateral
+		def initialize *sides
+			@sides = sides
+			check_positive_sides
+		end
+		def area
+			return calculate_area
+		end
+		def is_square
+			return true
+		end
+		def is_rectangle
+			return false
+		end
+		def is_trapezoid
+			return false
+		end
+
+		private
+
+		def calculate_area
+			return @sides[0] * @sides[0]
+		end
+	end
+	class Rectangle < Quadrilateral
+		def initialize *sides
+			@sides = sides
+			check_positive_sides
+		end
+		def area
+			return calculate_area
+		end
+		def is_square
+			return false
+		end
+		def is_rectangle
+			return true
+		end
+		def is_trapezoid
+			return false
+		end
+
+		private
+
+		def calculate_area
+			return @sides.min * @sides.max
+		end
 	end
 end
+

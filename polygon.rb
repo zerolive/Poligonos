@@ -87,7 +87,6 @@ class EquilateralTriangle < Triangle
 	def equilateral?
 		return true
 	end
-
 end
 
 class IsoscelesTriangle < Triangle
@@ -95,7 +94,6 @@ class IsoscelesTriangle < Triangle
 	def isosceles?
 		return true
 	end
-	
 end
 
 class ScaleneTriangle < Triangle
