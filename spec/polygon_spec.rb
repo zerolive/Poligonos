@@ -47,27 +47,21 @@ describe "A Quadrilateral" do
 		expect(Quadrilateral.build(1,1,1,1).number_of_sides).to eq(4)
 	end
 	it "Has positive sides" do
-		expect{Quadrilateral.new(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
+		expect{Quadrilateral.build(0,1,1,1)}.to raise_error "Non-positive sides arent allowed"
 	end
 	it "Knows its perimeter" do
 		expect(Quadrilateral.build(1,1,1,1).perimeter).to eq(4)
-		expect(Quadrilateral.new(1,1,1,2).perimeter).to eq(5)
+		expect(Quadrilateral.build(1,1,1,2).perimeter).to eq(5)
 	end
 	it "Knows if its a square" do
 		expect(Quadrilateral.build(1,1,1,1).is_square).to be(true)
-		expect(Quadrilateral.new(1,1,1,2).is_square).to be(false)
-	end
-	it "Knows if its a trapezoid" do
-		expect(Quadrilateral.build(1,1,1,1).is_trapezoid).to be(false)
-		expect(Quadrilateral.new(1,2,1,1).is_trapezoid).to be(false)
-		expect(Quadrilateral.new(1,2,3,1).is_trapezoid).to be(false)
-		expect(Quadrilateral.new(1,2,3,4).is_trapezoid).to be(true)
+		expect(Quadrilateral.build(1,1,1,2).is_square).to be(false)
 	end
 	it "Knows if its a rectangle" do
 		expect(Quadrilateral.build(1,1,1,1).is_rectangle).to be(false)
-		expect(Quadrilateral.new(1,2,1,1).is_rectangle).to be(false)
+		expect(Quadrilateral.build(1,2,1,1).is_rectangle).to be(false)
 		expect(Quadrilateral.build(1,2,2,1).is_rectangle).to be(true)
-		expect(Quadrilateral.new(1,2,2,3).is_rectangle).to be(false)
+		expect(Quadrilateral.build(1,2,2,3).is_rectangle).to be(false)
 	end
 	it "Knows Square area" do
 		expect(Quadrilateral.build(1,1,1,1).area).to eq(1)

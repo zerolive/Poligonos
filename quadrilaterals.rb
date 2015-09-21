@@ -2,6 +2,7 @@ class Quadrilateral
 	def self.build *sides
 		return Square.new(*sides) if is_square(*sides)
 		return Rectangle.new(*sides) if is_rectangle(*sides)
+		return Quadrilateral.new(*sides)
 	end
 	def initialize *sides
 		@sides = sides
@@ -25,9 +26,6 @@ class Quadrilateral
 	def is_square
 		return false
 	end
-	def is_trapezoid
-		sides_are_different
-	end
 
 	def self.is_rectangle *sides
 		check_two_couples_sides_equal(*sides)
@@ -35,7 +33,7 @@ class Quadrilateral
 	def is_rectangle
 		return false
 	end
-	#----------------------------------------------------------
+	
 	private
 
 	def there_are_nonpositive_sides
@@ -48,9 +46,6 @@ class Quadrilateral
 
 	def self.sides_are_equal *sides
 		sides.uniq.size == 1
-	end
-	def sides_are_different
-		@sides.uniq.size == 4
 	end
 	def self.check_two_couples_sides_equal *sides
 		count = 0
