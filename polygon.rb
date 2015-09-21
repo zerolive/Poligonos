@@ -80,26 +80,25 @@ class Triangle
 	def self.check_hasnt_sides_equal *sides
 		sides.uniq.size == 3
 	end
-end
+	class EquilateralTriangle < Triangle
 
-class EquilateralTriangle < Triangle
-
-	def equilateral?
-		return true
+		def equilateral?
+			return true
+		end
 	end
-end
 
-class IsoscelesTriangle < Triangle
+	class IsoscelesTriangle < Triangle
 
-	def isosceles?
-		return true
+		def isosceles?
+			return true
+		end
 	end
-end
 
-class ScaleneTriangle < Triangle
+	class ScaleneTriangle < Triangle
 
-	def scalene?
-		return true
+		def scalene?
+			return true
+		end
+		
 	end
-	
 end
