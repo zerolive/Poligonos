@@ -1,5 +1,4 @@
 require './polygon'
-require './quadrilaterals'
 require 'rspec'
 
 describe "A triangle" do
