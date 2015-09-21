@@ -23,6 +23,14 @@ class Quadrilateral
 		sides_are_different
 	end
 
+	def is_rectangle
+		count_number_of_equal_sides == 2
+	end
+
+	def print_values
+		@sides.each { |x| p x }
+	end
+
 	#----------------------------------------------------------
 	private
 
@@ -31,7 +39,7 @@ class Quadrilateral
 	end
 
 	def sum_of_sides
-		return @sides.inject(:+)
+		@sides.inject(:+)
 	end
 
 	def sides_are_equal
@@ -39,5 +47,19 @@ class Quadrilateral
 	end
 	def sides_are_different
 		@sides.uniq.size == 4
+	end
+	def count_number_of_equal_sides
+		count = 0
+		sides_for_count = []
+		@sides.each { |side| sides_for_count << side }
+		sides_for_count.each_with_index do |a_side, a_index|
+			sides_for_count.each_with_index do |b_side, b_index|
+				if a_side == b_side && a_index != b_index
+					count += 1
+					sides_for_count.delete(a_side)
+				end
+			end
+		end
+		return count
 	end
 end
