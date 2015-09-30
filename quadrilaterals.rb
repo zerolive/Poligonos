@@ -28,7 +28,7 @@ class Quadrilateral
 	end
 
 	def self.is_rectangle *sides
-		check_two_couples_sides_equal(*sides)
+		check_two_couples_sides_equal(*sides) == 2
 	end
 	def is_rectangle
 		return false
@@ -59,8 +59,7 @@ class Quadrilateral
 				end
 			end
 		end
-		return true if count == 2
-		return false if count !=2
+		return count
 	end
 	class Square < Quadrilateral
 		def initialize *sides
